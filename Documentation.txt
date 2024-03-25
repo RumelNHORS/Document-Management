@@ -1,0 +1,118 @@
+######################################
+Document Management API Documentation
+######################################
+
+Base URL:
+    http://127.0.0.1:8000/api
+
+Endpoints:
+User Signup
+    # Endpoint: POST /api/signup/
+    # Description: Allows users to sign up for an account.
+    # Request Body:
+        {
+        "username": "example_user",
+        "password": "password123"
+        }
+
+    # Response:
+        # 201 Created: User created successfully.
+        # 400 Bad Request: Invalid request body.
+    
+User Login
+    # Endpoint: POST /api/login/
+    # Description: Allows users to log in to their account.
+    # Request Body:
+
+        {
+        "username": "example_user",
+        "password": "password123"
+        }
+    # Response:
+        # 200 OK: Login successful. Returns JWT token.
+        # 401 Unauthorized: Invalid credentials.
+
+Document List
+    # Endpoint: GET /api/documents/
+    # Description: Retrieve a list of documents.
+    # Response:
+        # 200 OK: List of documents.
+
+        [
+        {
+            "id": 1,
+            "title": "Document Title",
+            "content": "Document Content",
+            "owner": "example_user"
+        },
+        ...
+        ]
+
+Create Document
+    # Endpoint: POST /api/documents/
+    # Description: Create a new document.
+    # Request Body:
+
+        {
+        "title": "New Document",
+        "content": "Document Content"
+        }
+    
+    # Response:
+        # 201 Created: Document created successfully.
+        # 400 Bad Request: Invalid request body.
+
+Retrieve Document
+    # Endpoint: GET /api/documents/<int:pk>/
+    # Description: Retrieve details of a specific document.
+    # Response:
+        # 200 OK: Document details.
+            {
+            "id": 1,
+            "title": "Document Title",
+            "content": "Document Content",
+            "owner": "example_user"
+            }
+
+Update Document
+    # Endpoint: PUT /api/documents/<int:pk>/
+    # Description: Update details of a specific document.
+    # Request Body:
+        {
+        "title": "Updated Title",
+        "content": "Updated Content"
+        }
+    
+    # Response:
+        # 200 OK: Document updated successfully.
+        # 400 Bad Request: Invalid request body.
+
+Delete Document
+    # Endpoint: DELETE /api/documents/<int:pk>/
+    # Description: Delete a specific document.
+    # Response:
+        # 204 No Content: Document deleted successfully.
+
+Update Document Share
+    # Endpoint: PUT /api/documents/<int:pk>/share/
+    # Description: Update access control for a specific document.
+    # Request Body:
+        {   
+            "users": [1, 2, 3],  // List of user IDs
+            "can_edit": true  // Whether users have edit permissions
+        }
+
+
+    # Response:
+        # 200 OK: Document share updated successfully.
+        # 400 Bad Request: Invalid request body.
+        # Status Code: 200 OK
+        # Content: Updated document share object
+
+Error Responses
+    # 400 Bad Request: Invalid request parameters or missing required fields.
+    # 401 Unauthorized: Missing or invalid authentication token.
+    # 403 Forbidden: User does not have permission to access the resource.
+    # 404 Not Found: Resource not found.
+    # 405 Method Not Allowed: HTTP method not allowed for the endpoint.
+

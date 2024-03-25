@@ -1,0 +1,28 @@
+################################################
+Instructions to Set Up and Run the Application:
+################################################
+
+# Clone the Repository:
+    git clone https://github.com/RumelNHORS/Document-Management.git
+
+# Install Dependencies:
+    cd <project_directory>
+    pip install -r requirements.txt
+
+# Run Migrations:
+    python manage.py makemigrations
+    python manage.py migrate
+
+# Create a Superuser (for accessing the Django admin):
+    python manage.py createsuperuser
+
+# Run the Development Server:
+    python manage.py runserver
+
+# Access the Admin Interface:
+    Visit http://127.0.0.1:8000/admin in your browser and log in with the superuser credentials.
+
+# Access the API Endpoints:
+    # Documents List: http://127.0.0.1:8000/api/documents/
+    # Document Detail: http://127.0.0.1:8000/api/documents/<int:pk>/
+    # Document Share Update: http://127.0.0.1:8000/api/documents/<int:pk>/share/
